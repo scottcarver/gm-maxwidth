@@ -10,4 +10,4 @@ import './style.scss';
 registerBlockType( 'create-block/gm-maxwidth', {
 	edit: Edit,
 	save,
-} );
+});

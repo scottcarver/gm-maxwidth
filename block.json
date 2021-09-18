@@ -5,7 +5,7 @@
 	"title": "Gm Maxwidth",
 	"category": "widgets",
 	"icon": "smiley",
-	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"description": "Adds a max-width control to every block",
 	"supports": {
 		"html": false
 	},

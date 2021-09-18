@@ -24,3 +24,22 @@ function create_block_gm_maxwidth_block_init() {
 	register_block_type( __DIR__ );
 }
 add_action( 'init', 'create_block_gm_maxwidth_block_init' );
+
+
+// Add Scripts.
+wp_enqueue_scripts(
+	'gutenberg_agencyblocks-cgb-block-js', // Handle.
+	plugins_url('/build/index.js', dirname(__FILE__)), // Block.build.js: We register the block here. Built with Webpack.
+	array(
+		'wp-api-fetch', 
+		'wp-blocks', 
+		'wp-i18n', 
+		'wp-element', 
+		'wp-editor', 
+		'wp-plugins', 
+		'wp-edit-post'
+	), // Dependencies, defined above.
+	'boop',
+	// filemtime( plugin_dir_path( __DIR__ ) . 'build/index.js' ), // Version: filemtime — Gets file modification time.
+	true // Enqueue the script in the footer.
+);

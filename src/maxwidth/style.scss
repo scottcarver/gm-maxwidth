@@ -1,0 +1,17 @@
+// .wp-block-paragraph {
+// 	background: transparent !important;
+// }
+
+// .components-button-group {
+// 	margin-bottom: 10px;
+// }
+
+/* Modify Editor so widths aren't restricted */
+.editor-inner-blocks.block-editor-inner-blocks {
+	width: 100%;
+	// background: pink;
+}
+
+.maxwidthInspector .components-toolbar {
+	margin: 0px 0 20px 0;
+}
