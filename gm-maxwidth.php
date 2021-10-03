@@ -25,7 +25,7 @@ function create_block_gm_maxwidth_block_init() {
 }
 add_action( 'init', 'create_block_gm_maxwidth_block_init' );
 
-
+/*
 // Add Scripts.
 wp_enqueue_scripts(
 	'gutenberg_agencyblocks-cgb-block-js', // Handle.
@@ -43,3 +43,4 @@ wp_enqueue_scripts(
 	// filemtime( plugin_dir_path( __DIR__ ) . 'build/index.js' ), // Version: filemtime — Gets file modification time.
 	true // Enqueue the script in the footer.
 );
+*/

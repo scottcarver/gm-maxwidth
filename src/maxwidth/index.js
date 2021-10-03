@@ -20,8 +20,17 @@ const { createHigherOrderComponent } = wp.compose;
  */
 // import backgroundSettings from "./data/attributes";
 import Inspector from "./inspector";
+
+// Blocks Allowed to have a width control
+const effectedBlockTypes = [
+	"core/image",
+	 "core/paragraph",
+	"core/heading",
+	"core/group",
+	"core/gallery"
+];
 // import getStyle from "./utils/get-style";
-// import "./style.scss";
+import "./style.scss";
 
 /**
  * Filters registered block settings, extending attributes with background settings
@@ -57,11 +66,13 @@ const withInspectorControl = createHigherOrderComponent(BlockEdit => {
 		// console.log("registered");
 		// console.log(props.name);
 		const isImage = props.name == "core/image";
-		const isSection = props.name == "core/paragraph";
+		const isParagraph = props.name == "core/paragraph";
 		const isHeading = props.name == "core/heading";
 		const isGroup = props.name == "core/group";
+		const isGallery = props.name == "core/gallery";
+		
 		const isSelected = props.isSelected;
-		const isActive = (isImage || isSection || isHeading || isGroup) && isSelected;
+		const isActive = isSelected; // (isImage || isParagraph || isHeading || isGroup || isGallery) && 
 		// const isActive = isSelected;
 		// Modify only for Image
 		return (
@@ -88,11 +99,12 @@ const withWidth = createHigherOrderComponent(BlockListBlock => {
 		// console.log(props);
 
 		const widthClass = "wp-block--" + props.block.attributes.alignment;
-		const typeClass = "wp-block-" + props.name.replace("core/", "");
+		const typeClass = "wp-block-" + props.name.replace("core/", "").replace("bx-containment/bx-", "");
 		let bothclasses = typeClass;
 
 		// if (false) {}
 		bothclasses = bothclasses + " " + widthClass;
+		console.log("bothclasses", bothclasses);
 
 		wrapperProps = {
 			...wrapperProps,
@@ -116,39 +128,43 @@ const withWidth = createHigherOrderComponent(BlockListBlock => {
  * @return {Object} Filtered props applied to save element.
  */
 function addWidth(extraProps, props, attributes) {
-	const cleanName = props.name.replace("core/", "");
+	const cleanName = props.name.replace("core/", "").replace("bx-containment/bx-","");
 	const isParagraph = props.name == "core/paragraph";
 	const isImage = props.name == "core/image";
 	const isHeading = props.name == "core/heading";
+	const isGallery = props.name == "core/gallery";
 	const isGroup = props.name == "core/group";
 
 	const { alignment } = attributes;
-
-	const optionalClass = (isParagraph || isImage || isHeading || isGroup) ? "wp-block-" + cleanName : null;
-	const isWidthEnabled = isParagraph || isImage || isHeading || isGroup;
+	const optionalClass = "wp-block-" + cleanName;
+	
+	// const optionalClass = (isParagraph || isImage || isHeading || isGroup || isGallery) ? "wp-block-" + cleanName : null;
+	const isWidthEnabled = isParagraph || isImage || isHeading || isGroup || isGallery;
 	// console.log("what is this attributes here?");
 	// console.log(attributes);
-
-	if (alignment && isWidthEnabled) {
+	//  && isWidthEnabled
+	if (alignment) {
 		// this was adding a background which was
 		// extraProps.style = assign(extraProps.style, getStyle(attributes));
-		extraProps.className = classnames(extraProps.className, "wp-block--" + alignment, optionalClass);
+		console.log('badoop',extraProps.className);
+		// extraProps.className = classnames(extraProps.className, "wp-block--" + alignment, optionalClass);
+		extraProps.className = classnames(optionalClass,  "wp-block--" + alignment, extraProps.className); // 'wp-block',
 	}
 
 	return extraProps;
 }
 
 // This was adding Background Settings I don't need
-addFilter("blocks.registerBlockType", "lubus/background/attribute", addAttributes);
+addFilter("blocks.registerBlockType", "gm/maxwidth/attribute", addAttributes);
 
 /* When *Editing a Block* add an additional Panel, here called Background Settings */
-addFilter("editor.BlockEdit", "lubus/background/inspector", withInspectorControl);
+addFilter("editor.BlockEdit", "gm/maxwidth/inspector", withInspectorControl);
 
 // Inside the *Editor* Add Additional props onto each Block (width and type classes)
-addFilter("editor.BlockListBlock", "lubus/background/withWidth", withWidth);
+addFilter("editor.BlockListBlock", "gm/maxwidth/withWidth", withWidth);
 
 // When *Saving* Add Additional Props to each Block (classes for type and width)
-addFilter("blocks.getSaveContent.extraProps", "lubus/background/addWidth", addWidth);
+addFilter("blocks.getSaveContent.extraProps", "gm/maxwidth/addWidth", addWidth);
 
 /* Available Filters:
 1) registerBlockType

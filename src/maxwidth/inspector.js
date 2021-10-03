@@ -38,6 +38,7 @@ const Inspector = props => {
 	const { attributes, setAttributes } = props;
 	const { alignment } = attributes;
 
+	
 	const changeWidth = newWidth => {
 		if (newWidth == alignment) {
 			console.log("change to Content width");
@@ -47,6 +48,7 @@ const Inspector = props => {
 			setAttributes({ alignment: newWidth });
 		}
 	};
+
 
 	const dynamicClasses = newWidth => {
 		return classnames("components-icon-button", "components-toolbar__control", {
