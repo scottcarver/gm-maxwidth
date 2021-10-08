@@ -6,6 +6,9 @@
 // 	margin-bottom: 10px;
 // }
 
+@import "variables";
+@import "widths";
+
 /* Modify Editor so widths aren't restricted */
 .editor-inner-blocks.block-editor-inner-blocks {
 	width: 100%;
@@ -17,14 +20,3 @@
 }
 
 
-.wp-block--wide{
-	background:red;
-}
-
-.components-button.components-icon-button.components-toolbar__control.is-active{
-	background:var(--wp-admin-theme-color);
-	svg rect{fill:white;}
-	&:hover{
-		svg rect{fill:red;}
-	}
-}

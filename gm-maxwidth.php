@@ -39,8 +39,16 @@ wp_enqueue_scripts(
 		'wp-plugins', 
 		'wp-edit-post'
 	), // Dependencies, defined above.
-	'boop',
 	// filemtime( plugin_dir_path( __DIR__ ) . 'build/index.js' ), // Version: filemtime — Gets file modification time.
 	true // Enqueue the script in the footer.
 );
 */
+
+
+function custom_width_css() {
+	// everything is compiled with grunt
+	
+	wp_enqueue_style( 'gm-width', plugin_dir_url( __FILE__ ). '/build/style-index.css', false );
+
+
+} add_action('wp_enqueue_scripts', 'custom_width_css');

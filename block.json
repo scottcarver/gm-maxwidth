@@ -11,6 +11,6 @@
 	},
 	"textdomain": "gm-maxwidth",
 	"editorScript": "file:./build/index.js",
-	"editorStyle": "file:./build/index.css",
+	"editorStyle": "file:./build/style-index.css",
 	"style": "file:./build/style-index.css"
 }

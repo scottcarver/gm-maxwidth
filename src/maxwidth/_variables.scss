@@ -1,0 +1,23 @@
+$content-width: 800px;
+$hd-up: 	 "min-width:1920px"; 
+$hd-down: 	 "max-width:1919px"; 
+$mx-up: 	 "min-width:1500px";  // Desktop
+$mx-down: 	 "max-width:1499px";
+$lg-up: 	 "min-width:1200px";  // Desktop
+$lg-down: 	 "max-width:1199px";
+$md-up:	 	 "min-width: 992px";  // Tablet
+$md-down: 	 "max-width: 991px";
+$sm-up: 	 "min-width: 768px";  // Phablet
+$sm-down: 	 "max-width: 767px";
+$xs-up: 	 "min-width: 480px";   // Phone
+$xs-down: 	 "max-width: 479px";
+$micro-up: 	 "min-width: 320px";  // Micro
+$micro-down: "max-width: 319px";
+
+
+$sanserif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+$serif: Georgia, Garamond, "Times New Roman", serif;
+
+
+// @mixin darktheme { body[data-color='dark'] }
+// @mixin lighttheme { body[data-color='light'] }
