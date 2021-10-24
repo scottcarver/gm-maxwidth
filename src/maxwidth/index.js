@@ -5,8 +5,8 @@
  * External Dependencies
  */
 import assign from "lodash/assign";
-
 import classnames from "classnames";
+import { useSetting } from '@wordpress/block-editor';
 
 /**
  * WordPress Dependencies
@@ -20,6 +20,9 @@ const { createHigherOrderComponent } = wp.compose;
  */
 // import backgroundSettings from "./data/attributes";
 import Inspector from "./inspector";
+// import getStyle from "./utils/get-style";
+import "./style.scss";
+
 
 // Blocks Allowed to have a width control
 const effectedBlockTypes = [
@@ -29,8 +32,8 @@ const effectedBlockTypes = [
 	"core/group",
 	"core/gallery"
 ];
-// import getStyle from "./utils/get-style";
-import "./style.scss";
+
+
 
 /**
  * Filters registered block settings, extending attributes with background settings
@@ -53,6 +56,10 @@ function addAttributes(settings) {
 	settings.attributes = assign(settings.attributes, maxwidthSettings);
 	return settings;
 }
+
+
+
+
 
 /**
  * Override the default edit UI to include a new block inspector control for
@@ -84,6 +91,10 @@ const withInspectorControl = createHigherOrderComponent(BlockEdit => {
 	};
 }, "withInspectorControl");
 
+
+
+
+
 /**
  * Override the default block element to add background wrapper props.
  *
@@ -97,6 +108,8 @@ const withWidth = createHigherOrderComponent(BlockListBlock => {
 		// let styles = getStyle(props.block.attributes);
 		// console.log("got the styles!");
 		// console.log(props);
+
+
 
 		const widthClass = "wp-block--" + props.block.attributes.alignment;
 		const typeClass = "wp-block-" + props.name.replace("core/", "").replace("bx-containment/bx-", "");
@@ -117,6 +130,10 @@ const withWidth = createHigherOrderComponent(BlockListBlock => {
 		return <BlockListBlock {...{ ...props }} className={bothclasses} wrapperProps={wrapperProps} />;
 	};
 }, "withWidth");
+
+
+
+
 
 /**
  * Override props assigned to save component to inject background atttributes
@@ -153,6 +170,12 @@ function addWidth(extraProps, props, attributes) {
 
 	return extraProps;
 }
+
+
+
+
+
+
 
 // This was adding Background Settings I don't need
 addFilter("blocks.registerBlockType", "gm/maxwidth/attribute", addAttributes);

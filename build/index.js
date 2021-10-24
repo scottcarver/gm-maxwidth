@@ -182,8 +182,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_assign__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_assign__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _inspector__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./inspector */ "./src/maxwidth/inspector.js");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style.scss */ "./src/maxwidth/style.scss");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _inspector__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./inspector */ "./src/maxwidth/inspector.js");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./style.scss */ "./src/maxwidth/style.scss");
 
 
 
@@ -194,6 +196,7 @@ __webpack_require__.r(__webpack_exports__);
 /**
  * External Dependencies
  */
+
 
 
 /**
@@ -214,11 +217,11 @@ const {
  */
 // import backgroundSettings from "./data/attributes";
 
+ // import getStyle from "./utils/get-style";
+
  // Blocks Allowed to have a width control
 
-const effectedBlockTypes = ["core/image", "core/paragraph", "core/heading", "core/group", "core/gallery"]; // import getStyle from "./utils/get-style";
-
-
+const effectedBlockTypes = ["core/image", "core/paragraph", "core/heading", "core/group", "core/gallery"];
 /**
  * Filters registered block settings, extending attributes with background settings
  *
@@ -262,7 +265,7 @@ const withInspectorControl = createHigherOrderComponent(BlockEdit => {
     // const isActive = isSelected;
     // Modify only for Image
 
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockEdit, props), isActive && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_inspector__WEBPACK_IMPORTED_MODULE_4__["default"], props));
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(BlockEdit, props), isActive && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_inspector__WEBPACK_IMPORTED_MODULE_5__["default"], props));
   };
 }, "withInspectorControl");
 /**
@@ -420,7 +423,7 @@ const Inspector = props => {
   } = props;
   const {
     alignment
-  } = attributes;
+  } = attributes; // const blockAlignment = useSetting( 'spacing.margin' );
 
   const changeWidth = newWidth => {
     if (newWidth == alignment) {
@@ -2436,6 +2439,17 @@ module.exports = stubFalse;
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
+
+/***/ }),
+
+/***/ "@wordpress/block-editor":
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["blockEditor"];
 
 /***/ }),
 

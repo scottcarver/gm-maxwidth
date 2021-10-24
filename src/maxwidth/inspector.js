@@ -37,7 +37,7 @@ const Inspector = props => {
 	// Attributes
 	const { attributes, setAttributes } = props;
 	const { alignment } = attributes;
-
+	// const blockAlignment = useSetting( 'spacing.margin' );
 	
 	const changeWidth = newWidth => {
 		if (newWidth == alignment) {

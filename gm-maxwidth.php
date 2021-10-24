@@ -52,3 +52,11 @@ function custom_width_css() {
 
 
 } add_action('wp_enqueue_scripts', 'custom_width_css');
+
+
+ // this will remove the stylesheet when init fires
+ add_action('admin_init','remove_default_admin_stylesheets');
+ // this is your function to deregister the default admin stylesheet
+ function remove_default_admin_stylesheets() {
+ 	// wp_deregister_style('wp-reset-editor-styles');
+ }
